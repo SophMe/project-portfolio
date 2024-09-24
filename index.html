@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sophie's Projects</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <nav id="navbar">
+      <ul>
+        <li><a class="nav-link" href="#welcome-section">Home</a></li>
+        <li><a class="nav-link" href="#projects">Work</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section id="welcome-section">
+    <h1>Learning Improving and Building Apps</h1>
+    <h2>Hi, I'm Sophie, a Fullstack Web Developer on a journey to create, learn, and share. Explore my growing collection of FreeCodeCamp projects!</h2>
+    <a href="#projects"><button>See My Work</button></a>
+  </section>
+
+  <!-- WORK -->
+  <section id="projects">
+    <div>
+      <h1>My FreeCodeCamp Projects</h1>
+      <h2>Check out what I’ve been building!</h2>
+    </div>
+
+    <!-- RESPONSIVE WEB DESIGN -->
+    <section id="responsive-web-design">
+      <div>
+        <h2>Responsive Web Design</h2>
+        <h3>Projects I’ve built as part of FreeCodeCamp's Responsive Web Design Certification</h3>
+      </div>
+
+      <div class="project-wrapper">
+        <div class="project-tile">
+          <h3>Tribute Page</h3>
+          <img src="tribute.png" alt="Screenshot of Tribute Page for Mata Hari">
+          <p>A tribute to Mata Hari—dancer, courtesan, and alleged spy during World War I.</p>
+          <p>See the code on <a href="" target="_blank">GitHub</a></p>
+        </div>
+
+        <div class="project-tile">
+          <h3>Form Building</h3>
+          <img src="placeholder.png" alt="">
+          <p>A custom form built from scratch as part of my web development learning journey.</p>
+          <p>See the code on <a href="" target="_blank">GitHub</a></p>
+        </div>
+
+        <div class="project-tile">
+          <h3>Product Landing Page</h3>
+          <img src="placeholder.png" alt="">
+          <p>A sleek, responsive landing page designed to showcase a fictional product. This project highlights my skills in layout design, user experience, and clean, organized code.</p>
+          <p>See the code on <a href="" target="_blank">GitHub</a></p>
+        </div>
+      </section>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h1>Let’s Connect!</h1>
+    <form id="form" action="" method="post">
+      <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required
+        >
+        <input 
+          type="submit" 
+          id="submit" 
+          value="Submit"
+        >
+    </form>
+    <div>
+      Find me on <a id="profile-link" href="https://github.com/SophMe" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+</body>
+</html>
