@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <main id="main-doc">
+    <nav id="navbar">
+      <header>JavaScript Cheat Sheet</header>
+      <li><a class="nav-link" href="#JavaScript_Basics">JavaScript Basics</a></li>
+      <li><a class="nav-link" href="#Functions_and_Scope">Functions and Scope</a></li>
+      <li><a class="nav-link" href="#Objects_and_Arrays">Objects and Arrays</a></li>
+      <li><a class="nav-link" href="#Control_Flow">Control Flow</a></li>
+      <li><a class="nav-link" href="#Advanced_Topics">Advanced Topics</a></li>
+    </nav>
+
+    <!-- Section 1: JavaScript Basics -->
+    <section class="main-section" id="JavaScript_Basics">
+      <header>JavaScript Basics</header>
+      <p>JavaScript uses variables, data types, and type checking for basic operations.</p>
+      <p>Variables can be declared using var, let, and const.</p>
+      <code>
+        var x = 10; <br>
+        let y = 20; <br>
+        const z = 30;
+      </code>
+      <li>Primitive data types: String, Number, Boolean, Null, Undefined.</li>
+      <li>Reference types: Object, Array, Function.</li>
+    </section>
+
+    <!-- Section 2: Functions and Scope -->
+    <section class="main-section" id="Functions_and_Scope">
+      <header>Functions and Scope</header>
+      <p>Functions can be declared in multiple ways, including function declarations, expressions, and arrow functions.</p>
+      <p>JavaScript also supports different types of scopes: global, function, and block scope.</p>
+      <code>
+        function greet() { return "Hello!"; } <br>
+        const greet = () => "Hello!";
+      </code>
+      <li>Variables declared with <code>var</code> are function-scoped.</li>
+      <li><code>let</code> and <code>const</code> are block-scoped.</li>
+    </section>
+
+    <!-- Section 3: Objects and Arrays -->
+    <section class="main-section" id="Objects_and_Arrays">
+      <header>Objects and Arrays</header>
+      <p>Objects are collections of key-value pairs, while arrays are ordered lists of values.</p>
+      <p>Objects and arrays are essential for working with structured data.</p>
+      <code>
+        const person = { name: "John", age: 30 }; <br>
+        const numbers = [1, 2, 3, 4];
+      </code>
+      <li>Access object properties with dot notation or square brackets.</li>
+      <li>Use array methods like <code>push()</code>, <code>pop()</code>, <code>shift()</code>, and <code>unshift()</code>.</li>
+    </section>
+
+    <!-- Section 4: Control Flow -->
+    <section class="main-section" id="Control_Flow">
+      <header>Control Flow</header>
+      <p>JavaScript supports conditional statements like if and switch, and loops for repeated execution.</p>
+      <p>Common loops include for and while.</p>
+      <code>
+        if (age >= 18) { console.log("Adult"); } <br>
+        for (let i = 0; i < 5; i++) { console.log(i); }
+      </code>
+      <li><code>switch</code> statements allow multiple conditions to be checked.</li>
+      <li><code>while</code> loops execute as long as a condition is true.</li>
+    </section>
+
+    <!-- Section 5: Advanced Topics -->
+    <section class="main-section" id="Advanced_Topics">
+      <header>Advanced Topics</header>
+      <p>Modern JavaScript (ES6+) introduced powerful features like destructuring, the spread operator, and promises for async code.</p>
+      <p>Async/await provides a cleaner syntax for handling asynchronous operations.</p>
+      <code>
+        const [a, b] = [1, 2]; <br>
+        let promise = new Promise((resolve, reject) => resolve("Success!"));
+      </code>
+      <li>Destructuring allows extracting data from arrays and objects.</li>
+      <li>Promises and async/await are essential for handling asynchronous tasks.</li>
+    </section>
+  </main>
+</html>
