@@ -194,3 +194,27 @@ const setPlayerCards = (arr = players) => {
     `
   ).join('');
 };
+
+  playersDropdownList.addEventListener('change', (e) => {
+    // console.log(e.target.value)
+    playerCards.innerHTML = '';
+    switch (e.target.value) {
+      case 'nickname':
+        setPlayerCards(players.filter(i => i.nickname !== null));
+        break;
+      case 'forward':
+        setPlayerCards(players.filter(i => i.position === 'forward'));
+        break;
+      case 'midfielder':
+        setPlayerCards(players.filter(i => i.position === 'midfielder'));
+        break;
+      case "defender":
+        setPlayerCards(players.filter((i) => i.position === "defender"));
+        break;
+      case "goalkeeper":
+        setPlayerCards(players.filter((i) => i.position === "goalkeeper"));
+        break;
+      default: setPlayerCards();
+    }
+  });
+  
