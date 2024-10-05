@@ -10,9 +10,11 @@ function checkUserInput() {
     alert("Please provide a decimal number greater than or equal to 0");
     return;
   }
+  decimalToBinary(parseInt(numberInput.value));
+  numberInput.value = '';
 };
 
-// Step 3: add EventListener to User action
+// Step 3: Add EventListener to User action
 convertBtn.addEventListener('click', checkUserInput);
 numberInput.addEventListener('keydown', (e) => {
   // console.log(e);
@@ -20,3 +22,29 @@ numberInput.addEventListener('keydown', (e) => {
     checkUserInput()
   }
 });
+
+// Step 4: Create function for the conversion
+function decimalToBinary (input) {
+  const inputs = [];
+  const quotients = [];
+  const remainders = [];
+
+  if (input === 0) {
+    result.innerText = "0";
+    return;
+  }
+
+  while ( input > 0 ) {
+    const quotient = Math.floor(input / 2);
+    const remainder = input % 2;
+    inputs.push(input);
+    quotients.push(quotient);
+    remainders.push(remainder);
+    input = quotient;
+  }
+  // console.log("Inputs: ", inputs);
+  // console.log("Quotients: ", quotients);
+  // console.log("Remainders: ", remainders);
+  const binaryResult = remainders.reverse().join("");
+  result.innerText = binaryResult;
+}
