@@ -2,6 +2,7 @@
 const numberInput = document.getElementById('number-input');
 const convertBtn = document.getElementById('convert-btn');
 const result = document.getElementById('result');
+const animationContainer = document.getElementById('animation-container');
 
 // Step 2: Create function to display changes of user action (based on EventListener)
 const checkUserInput = () => {
@@ -11,12 +12,9 @@ const checkUserInput = () => {
     return;
   }
 
-  if (inputInt === 5) {
-    showAnimation();
-    return;
-  }
-  result.textContent = decimalToBinary(inputInt);
-  numberInput.value = '';
+  showAnimation(inputInt); // Call the animation function for any input
+  result.textContent = decimalToBinary(inputInt); // Show binary result immediately
+  numberInput.value = ''; // Clear input
 };
 
 // Step 3: Add EventListener to User action
@@ -36,7 +34,56 @@ const decimalToBinary = (input) => {
   }
 };
 
-// Step 5: Create function for animation
-const showAnimation = () => {
+// Step 5: Dynamically generate animation data based on user input
+const generateAnimationData = (input) => {
+  const steps = [];
+  let currentValue = input;
+  let delay = 0;
 
+  while (currentValue > 1) {
+    steps.push({
+      inputVal: currentValue,
+      msg: `decimalToBinary(${currentValue}) returns '${Math.floor(currentValue / 2)}' + ${currentValue % 2} (${currentValue} % 2)`,
+      addElDelay: delay,
+      showMsgDelay: delay + 5000,
+      removeElDelay: delay + 10000,
+    });
+    currentValue = Math.floor(currentValue / 2);
+    delay += 2000;
+  }
+
+  // Add the base case
+  steps.push({
+    inputVal: currentValue,
+    msg: `decimalToBinary(${currentValue}) returns '${currentValue}' (base case)`,
+    addElDelay: delay,
+    showMsgDelay: delay + 5000,
+    removeElDelay: delay + 10000,
+  });
+
+  return steps;
+};
+
+// Step 6: Set up animation functionality
+const showAnimation = (inputInt) => {
+  animationContainer.innerHTML = ''; // Clear previous animation
+  const animationData = generateAnimationData(inputInt);
+
+  animationData.forEach((obj) => {
+    setTimeout(() => {
+      animationContainer.innerHTML += `
+        <p id="anim-${obj.inputVal}" class="animation-frame">
+          decimalToBinary(${obj.inputVal})
+        </p>
+      `;
+    }, obj.addElDelay);
+
+    setTimeout(() => {
+      document.getElementById(`anim-${obj.inputVal}`).textContent = obj.msg;
+    }, obj.showMsgDelay);
+
+    setTimeout(() => {
+      document.getElementById(`anim-${obj.inputVal}`).remove();
+    }, obj.removeElDelay);
+  });
 };
