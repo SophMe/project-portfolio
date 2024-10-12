@@ -1,9 +1,6 @@
 // Variable Declarations and DOM Selections
 const sortButton = document.getElementById('sort');
 
-// Event listener
-sortButton.addEventListener('click', sortInputArray);
-
 // Main function
 const sortInputArray = (event) => {
   event.preventDefault();
@@ -12,12 +9,14 @@ const sortInputArray = (event) => {
     ...document.getElementsByClassName('values-dropdown')
   ].map((dropdown) => Number(dropdown.value));
   // console.log('Input Values:', inputValues);
-  // const sortedValues = bubbleSort(inputValues);
-  const sortedValues = selectionSort(inputValues);
+  const sortedValues = bubbleSort(inputValues);                // choose sorting function
   updateUI(sortedValues);
 };
 
-// Helper function
+// Event listener
+sortButton.addEventListener('click', sortInputArray);
+
+// Helper functions
 const updateUI = (array = []) => {
   array.forEach((num, i) => {
     const outputValueNode = document.getElementById(`output-value-${i}`);
