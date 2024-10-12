@@ -1,5 +1,10 @@
+// Variable Declarations and DOM Selections
 const sortButton = document.getElementById('sort');
 
+// Event listener
+sortButton.addEventListener('click', sortInputArray);
+
+// Main function
 const sortInputArray = (event) => {
   event.preventDefault();
 
@@ -10,8 +15,7 @@ const sortInputArray = (event) => {
   updateUI(inputValues);
 };
 
-sortButton.addEventListener('click', sortInputArray);
-
+// Helper function
 const updateUI = (array = []) => {
   array.forEach((num, i) => {
     const outputValueNode = document.getElementById(`output-value-${i}`);
