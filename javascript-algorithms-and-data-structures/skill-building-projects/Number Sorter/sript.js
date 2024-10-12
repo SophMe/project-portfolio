@@ -12,7 +12,8 @@ const sortInputArray = (event) => {
     ...document.getElementsByClassName('values-dropdown')
   ].map((dropdown) => Number(dropdown.value));
   // console.log('Input Values:', inputValues);
-  const sortedValues = bubbleSort(inputValues);
+  // const sortedValues = bubbleSort(inputValues);
+  const sortedValues = selectionSort(inputValues);
   updateUI(sortedValues);
 };
 
@@ -37,3 +38,19 @@ const bubbleSort = (array) => {
   }
   return array;
 };
+
+const selectionSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      // console.log(array, array[j], array[minIndex]);
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+    }
+    const temp = array[i];
+    array[i]= array[minIndex];
+    array[minIndex] = temp;
+  }
+  return array;
+}
