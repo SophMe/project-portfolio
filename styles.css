@@ -1,261 +1,286 @@
 /* GENERAL */
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+:root {
+	/* Color Palette */
+  --bg-color: #f4f4f4;
+	--text-color: #638175;
+	--navbar-bg: rgba(255, 255, 255, 0.8);
+	--hover-color: #52755a;
+	--project-bg: #fff;
+	--border-color: #ddd;
+	--placeholder-color: #ddd;
+	--code-bg: #f5f5f5;
+
+	/* Additional Colors */
+	--color-1: #2E4147;
+	--color-2: #A78E44;
+	--color-3: #B23A48;
+	--color-4: #D36E70;
+	--color-5: #E56349;
+	--color-6: #F3CAC3;   /* pink */
+	--color-7: #F5DEB3;   /* beige */
+	--color-8: #F7E2D4;   /* peach */
+	--color-9: #92A8A3;
+	--color-10: #C4A381;
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Lora:wght@400&display=swap');
 
 html {
-  font-size: 100%;
+	font-size: 100%;
 }
 
 body {
-  font-family: 'Lora', serif;
-  margin: 0;
-  padding-top: 100px;                           /* Space for fixed navbar */
-  background-color: #f4f4f4;
-  color: #638175;
+	font-family: 'Lora', serif;
+	margin: 0;
+	padding-top: 100px;                         
+	background-color: var(--bg-color);
+	color: var(--text-color);
 }
 
 h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 100;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 100;
 }
 
 #welcome-section h1 {
-  word-spacing: 1rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 200;
-  font-size: 2rem;
+	word-spacing: 1rem;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+	font-size: 2rem;
 }
 
 #projects h1 {
-  font-size: 1.8rem;
+	font-size: 1.8rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 img {
-  object-fit: cover;
+	object-fit: cover;
 }
 
 code {
-  background-color: #f5f5f5;
-  padding: 1px;
-  border-radius: 3px;
-  font-family: inherit;
-  font-size: inherit;
-  color: #555;
-  white-space: pre-wrap;
+	background-color: var(--code-bg);
+	padding: 1px;
+	border-radius: 3px;
+	font-family: inherit;
+	font-size: inherit;
+	color: #555;
+	white-space: pre-wrap;
 }
 
 /* NAVBAR */
 #navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 1000;                                /* Ensure the navbar is above other elements */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	background-color: var(--navbar-bg);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	z-index: 1000;                                    
 }
 
 #navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0;
+	margin: 0;
 }
 
 #navbar li {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
 .nav-link {
-  color: #638175;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.5rem;
-  transition: background-color 0.3s ease, padding-left 0.3s ease;
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 1rem;
+	padding: 0.5rem;
+	transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #f4f4f4;
-  background-color: rgba(99, 129, 117, 0.8);
-  padding-left: 10px;
+	color: #f4f4f4;
+	background-color: rgba(99, 129, 117, 0.8);
+	padding-left: 10px;
 }
 
 /* WELCOME SECTION */
 #welcome-section {
-  text-align: center;
-  padding: 80px 20px;
-  background-color: white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  margin: 20px auto;
-  max-width: 1000px;
-  border-radius: 5px;
+	text-align: center;
+	padding: 80px 20px;
+	background-color: white;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	margin: 20px auto;
+	max-width: 1000px;
+	border-radius: 5px;
 }
 
 #welcome-section h1 {
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
+	text-transform: uppercase;
+	font-size: 2.5rem;
+	margin-bottom: 40px;
 }
 
 #welcome-section h2 {
-  text-align: left;
-  font-size: 1.5rem;
-  margin-bottom: 40px;
+	text-align: left;
+	font-size: 1.5rem;
+	margin-bottom: 40px;
 }
 
 #welcome-section button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #638175;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	padding: 10px 20px;
+	font-size: 18px;
+	background-color: var(--text-color);
+	color: white;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 #welcome-section button:hover {
-  background-color: #52755a;
+	background-color: var(--hover-color);
 }
 
 /* PROJECTS SECTION */
 #projects {
-  margin: 40px auto;
-  padding: 1rem;
-  max-width: 1000px;
+	margin: 40px auto;
+	padding: 1rem;
+	max-width: 1000px;
 }
 
 .project-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
 }
 
 .project, .project-tile {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  width: calc(33.333% - 20px);                     /* Three equal columns with space in between */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+	background-color: var(--project-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	padding: 20px;
+	width: calc(33.333% - 20px);                        
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease;
 }
 
 .project:hover, .project-tile:hover {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 .project img, .project-tile img {
-  width: 100%;
-  height: auto;
-  background-color: #ddd;                         /* Placeholder for images */
-  border-radius: 5px;
-  margin-bottom: 15px;
+	width: 100%;
+	height: auto;
+	background-color: var(--placeholder-color);                           
+	border-radius: 5px;
+	margin-bottom: 15px;
 }
 
 .project p, .project-tile p {
-  font-size: 16px;
-  margin: 10px 0;
+	font-size: 16px;
+	margin: 10px 0;
 }
 
 .project a, .project-tile a {
-  color: #638175;
-  text-decoration: none;
+	color: var(--text-color);
+	text-decoration: none;
 }
 
 .project a:hover, .project-tile a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* CONTACT SECTION */
 #contact {
-  background-color: white;
-  padding: 50px 20px;
-  text-align: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  margin: 40px auto;
-  max-width: 1000px;
-  border-radius: 5px;
+	background-color: white;
+	padding: 50px 20px;
+	text-align: center;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	margin: 40px auto;
+	max-width: 1000px;
+	border-radius: 5px;
 }
 
 #contact h1 {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 input[type="email"], input[type="submit"] {
-  padding: 10px;
-  margin: 10px;
-  font-size: 16px;
-  width: 100%;
-  max-width: 300px;
+	padding: 10px;
+	margin: 10px;
+	font-size: 16px;
+	width: 100%;
+	max-width: 300px;
 }
 
 input[type="email"] {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
 }
 
 input[type="submit"] {
-  background-color: #638175;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+	background-color: var(--text-color);
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-  background-color: #52755a;
+	background-color: var(--hover-color);
 }
 
 #profile-link {
-  color: #638175;
-  text-decoration: none;
+	color: var(--text-color);
+	text-decoration: none;
 }
 
 #profile-link:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
-  .project-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
+	.project-wrapper {
+		flex-direction: column;
+		align-items: center;
+	}
 
-  .project, .project-tile {
-    width: 100%;
-  }
+	.project, .project-tile {
+		width: 100%;
+	}
 
-  #navbar ul {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+	#navbar ul {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 
-  #navbar li {
-    margin: 10px 0;
-  }
+	#navbar li {
+		margin: 10px 0;
+	}
 }
