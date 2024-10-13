@@ -45,6 +45,16 @@ img {
   object-fit: cover;
 }
 
+code {
+  background-color: #f5f5f5;
+  padding: 1px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: inherit;
+  color: #555;
+  white-space: pre-wrap;
+}
+
 /* NAVBAR */
 #navbar {
   position: fixed;
