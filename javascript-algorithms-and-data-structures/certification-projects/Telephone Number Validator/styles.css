@@ -1,0 +1,111 @@
+:root {
+  --color-1: #2E4147;
+  --color-7: #F5DEB3;
+  --color-9: #92A8A3;
+  --color-10: #C4A381;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  border: 3px solid var(--color-1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-1);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 2px solid var(--color-9);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px auto;
+  color: white;
+}
+
+#check-btn {
+  background-color: var(--color-10);
+}
+
+#clear-btn {
+  background-color: var(--color-9);
+}
+
+#results-div {
+  font-size: 1.1rem;
+  color: var(--color-1);
+  padding: 10px;
+  margin-top: 20px;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .container {
+      max-width: 500px;
+  }
+
+  input[type="text"], button {
+      font-size: 1.2rem;
+      padding: 20px;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .container {
+      max-width: 450px;
+  }
+
+  input[type="text"], button {
+      font-size: 1.1rem;
+      padding: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+      max-width: 350px;
+      padding: 20px;
+  }
+
+  input[type="text"], button {
+      font-size: 1rem;
+      padding: 15px;
+  }
+
+  button {
+      width: 100%;
+  }
+}
