@@ -3,11 +3,30 @@ const checkBtn = document.getElementById('check-btn');
 const clearBtn = document.getElementById('clear-btn');
 const result = document.getElementById('results-div');
 
-checkBtn.addEventListener('click', () => {
-  if (numberInput.value === '') {
+const phoneNumberRegex = /^(1\s?)?(\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/;
+
+const validateNumber = (number) => {
+  const isValid = phoneNumberRegex.test(number);
+  if (number === '') {
     alert('Please provide a phone number');
+    return;
+  } 
+  if (isValid) {
+    result.textContent = `Valid US number: ${number}`;
+    console.log('Result displayed:', result.textContent);
+  } else {
+    result.textContent = `Invalid US number: ${number}`;
+    console.log('Result displayed:', result.textContent);
   }
-  return;
+};
+
+checkBtn.addEventListener('click', () => {
+  const phoneNumber = numberInput.value.trim();
+  if (phoneNumber === '') {
+    alert('Please provide a phone number');
+  } else {
+    validateNumber(phoneNumber);
+  }
 });
 
 clearBtn.addEventListener('click', () => {
