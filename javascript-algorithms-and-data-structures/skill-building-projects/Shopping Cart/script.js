@@ -127,3 +127,11 @@ class ShoppingCart {
       `;
   }
 };
+
+const cart = new ShoppingCart();
+const addToCartBtns = document.getElementsByClassName('add-to-cart-btn');     // return a Collection
+[...addToCartBtns].forEach((btn) => {                                         // convert HTMLCollection into an array
+  btn.addEventListener('click', (event) => {
+    cart.addItem(Number(event.target.id), products);
+  })
+});
