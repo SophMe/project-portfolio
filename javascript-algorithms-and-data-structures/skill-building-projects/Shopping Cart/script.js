@@ -126,6 +126,9 @@ class ShoppingCart {
       </div>
       `;
   }
+  getCounts() {
+    return this.items.length;
+  }
 };
 
 const cart = new ShoppingCart();
@@ -133,6 +136,7 @@ const addToCartBtns = document.getElementsByClassName('add-to-cart-btn');     //
 [...addToCartBtns].forEach((btn) => {                                         // convert HTMLCollection into an array
   btn.addEventListener('click', (event) => {
     cart.addItem(Number(event.target.id), products);
+    totalNumberOfItems.textContent = cart.getCounts();
   })
 });
 
