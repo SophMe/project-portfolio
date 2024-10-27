@@ -94,7 +94,9 @@ const platformPositions = [
 ];
 
 // Mapping Platform Instances
-const platforms = platformPositions.map(pos => new Platform(pos.x, pos.y));
+const platforms = platformPositions.map(
+  platform => new Platform(platform.x, platform.y)
+);
 
 const animate = () => {
   requestAnimationFrame(animate);
