@@ -59,6 +59,26 @@ class Player {
   }
 };
 
+class Platform {
+  constructor(x, y) {
+    this.position = {
+      x, y
+    };
+    this.width = 200;
+    this.height = proportionalSize(40);
+    this.draw();
+  }
+  draw() {
+    ctx.fillStyle = '#acd157';
+    ctx.fillRect(
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    )
+  }
+};
+
 const player = new Player();
 
 const animate = () => {
@@ -114,7 +134,7 @@ const movePlayer = (key, xVelocity, isPressed) => {
 const startGame = () => {
   canvas.style.display = 'block';
   startScreen.style.display = 'none';
-  player.draw();
+  animate();
 };
 
 startBtn.addEventListener('click', startGame);
