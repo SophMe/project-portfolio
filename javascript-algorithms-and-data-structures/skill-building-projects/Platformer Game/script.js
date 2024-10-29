@@ -243,6 +243,17 @@ const startGame = () => {
   animate();
 };
 
+// Checkpoint Screen Display
+const showCheckpointScreen = (msg) => {
+  checkpointScreen.style.display = 'block';
+  checkpointMessage.textContent = msg;
+  if (isCheckpointCollisionDetectionActive) {
+    setTimeout(() => {
+      checkpointScreen.style.display = 'none';
+    }, 2000);
+  }
+};
+
 // Event Listeners
 startBtn.addEventListener('click', startGame);
 
