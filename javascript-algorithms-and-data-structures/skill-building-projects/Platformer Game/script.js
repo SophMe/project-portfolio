@@ -140,6 +140,10 @@ const animate = () => {
     platform.draw();
   });
 
+  checkpoints.forEach(checkpoint => {
+    checkpoint.draw();
+  });
+
   player.update();
 
   if (keys.rightKey.pressed && player.position.x < proportionalSize(400)) {
@@ -154,9 +158,15 @@ const animate = () => {
     platforms.forEach(platform => {
       platform.position.x -= 5;
     });
+    checkpoints.forEach(checkpoint => {
+      checkpoint.position.x -= 5;
+    });
   } else if (keys.leftKey.pressed && isCheckpointCollisionDetectionActive) {
     platforms.forEach(platform => {
       platform.position.x += 5;
+    });
+    checkpoints.forEach(checkpoint => {
+      checkpoint.position.x +=5;
     });
   }
 
