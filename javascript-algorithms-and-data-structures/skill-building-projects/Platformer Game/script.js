@@ -166,7 +166,7 @@ const animate = () => {
       platform.position.x += 5;
     });
     checkpoints.forEach(checkpoint => {
-      checkpoint.position.x +=5;
+      checkpoint.position.x += 5;
     });
   }
 
@@ -254,6 +254,7 @@ const movePlayer = (key, xVelocity, isPressed) => {
         player.velocity.x = xVelocity;
       }
       player.velocity.x += xVelocity;
+      break;
   }
 };
 
