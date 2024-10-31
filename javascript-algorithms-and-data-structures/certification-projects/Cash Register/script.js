@@ -1,4 +1,4 @@
-// price and cid provided by freeCodeCamp
+// price and cash in drawer provided by freeCodeCamp
 
 let price = 1.87;
 let cid = [
@@ -13,7 +13,8 @@ let cid = [
   ['ONE HUNDRED', 100]
 ];
 
-const change = document.getElementById('change-due');
+// Access DOM elements
+const changeDue = document.getElementById('change-due');
 const cash = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn')
 const total = document.getElementById('total');
@@ -37,15 +38,25 @@ class CashRegister {
       { name: "PENNY", value: 0.01 }
     ]
   }
-// "Calculate the change due by subtracting the price from the cash given."
-// "Loop through each currency denomination from largest to smallest."
-// "If the denomination can be used to cover part of the change, add it to the change array."
+  // "Calculate the change due by subtracting the price from the cash given."
+  calculateChange(cashGiven) {
+    changeDue = cashGiven - price;
+    changeDueArray = [];
+    let cidCopy = JSON.parse(JSON.stringify(this.cid));   // deep copy of cid
+  // "Loop through each currency denomination from largest to smallest."
+    for (let denom of this.denominations) {
+      let amountAvailable = cidCopy.find(item => item[0] === denom.name)[1];
+      let amountToReturn = 0;
+    }
+  // "If the denomination can be used to cover part of the change, add it to the change array."
+  }
 }
 
 purchaseBtn.addEventListener('click', () => {
-  if (cash.value < price) {
+  const cashGiven = parseFloat(cash.value);
+  if (cashGiven < price) {
     alert('Customer does not have enough money to purchase the item');
-  } else if (cash.value === price) {
+  } else if (cashGiven === price) {
     change.textContent = 'No change due - customer paid with exact cash';
   }
   return;
