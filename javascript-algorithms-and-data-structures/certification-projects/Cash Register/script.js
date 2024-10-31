@@ -21,10 +21,25 @@ const total = document.getElementById('total');
 total.textContent = `Total: $${price}`;
 
 class CashRegister {
+  // Initialize objects with default values using the constructor
   constructor(price, cid) {
     this.price = price;
     this.cid = cid;
+    this.denominations = [
+      { name: "ONE HUNDRED", value: 100 },
+      { name: "TWENTY", value: 20 },
+      { name: "TEN", value: 10 },
+      { name: "FIVE", value: 5 },
+      { name: "ONE", value: 1 },
+      { name: "QUARTER", value: 0.25 },
+      { name: "DIME", value: 0.1 },
+      { name: "NICKEL", value: 0.05 },
+      { name: "PENNY", value: 0.01 }
+    ]
   }
+// "Calculate the change due by subtracting the price from the cash given."
+// "Loop through each currency denomination from largest to smallest."
+// "If the denomination can be used to cover part of the change, add it to the change array."
 }
 
 purchaseBtn.addEventListener('click', () => {
