@@ -47,8 +47,16 @@ class CashRegister {
     for (let denom of this.denominations) {
       let amountAvailable = cidCopy.find(item => item[0] === denom.name)[1];
       let amountToReturn = 0;
+      // "If the denomination can be used to cover part of the change, add it to the change array."
+      while (changeDue >= denom.value && amountAvailable >= denom.value) {
+        changeDue -= denom.value;
+        amountAvailable -= denom.value;
+        amountToReturn += denom.value;
+      }
+      if (amountToReturn > 0) {
+        changeDueArray.push([denom.name, amountToReturn]);
+      }
     }
-  // "If the denomination can be used to cover part of the change, add it to the change array."
   }
 }
 
