@@ -17,3 +17,21 @@ const change = document.getElementById('change-due');
 const cash = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn')
 const total = document.getElementById('total');
+
+total.textContent = `Total: $${price}`;
+
+class CashRegister {
+  constructor(price, cid) {
+    this.price = price;
+    this.cid = cid;
+  }
+}
+
+purchaseBtn.addEventListener('click', () => {
+  if (cash.value < price) {
+    alert('Customer does not have enough money to purchase the item');
+  } else if (cash.value === price) {
+    change.textContent = 'No change due - customer paid with exact cash';
+  }
+  return;
+});
