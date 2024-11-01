@@ -40,13 +40,15 @@ class CashRegister {
   }
   // "Calculate the change due by subtracting the price from the cash given."
   calculateChange(cashGiven) {
-    changeDue = cashGiven - price;
-    changeDueArray = [];
-    let cidCopy = JSON.parse(JSON.stringify(this.cid));   // deep copy of cid
+    let changeDue = cashGiven - this.price;
+    let changeDueArray = [];
+    let totalCid = this.cid.reduce((acc, curr) => acc + curr[1], 0);   // deep copy of cid
+
   // "Loop through each currency denomination from largest to smallest."
     for (let denom of this.denominations) {
       let amountAvailable = cidCopy.find(item => item[0] === denom.name)[1];
       let amountToReturn = 0;
+      
       // "If the denomination can be used to cover part of the change, add it to the change array."
       while (changeDue >= denom.value && amountAvailable >= denom.value) {
         changeDue -= denom.value;
