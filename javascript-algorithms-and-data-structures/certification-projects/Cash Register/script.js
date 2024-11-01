@@ -42,7 +42,7 @@ class CashRegister {
   calculateChange(cashGiven) {
     let changeDue = cashGiven - this.price;
     let changeDueArray = [];
-    let totalCid = this.cid.reduce((acc, curr) => acc + curr[1], 0);   // deep copy of cid
+    let cidCopy = JSON.parse(JSON.stringify(this.cid));
 
   // "Loop through each currency denomination from largest to smallest."
     for (let denom of this.denominations) {
@@ -59,6 +59,11 @@ class CashRegister {
         changeDueArray.push([denom.name, amountToReturn]);
       }
     }
+    // If change cannot be fully met, return a message
+    if (changeDue > 0) {
+      return 'Insufficient funds in register to make change.';
+    }
+    return changeDueArray.length > 0 ? changeDueArray : 'No change needed.'
   }
 }
 
@@ -67,7 +72,7 @@ purchaseBtn.addEventListener('click', () => {
   if (cashGiven < price) {
     alert('Customer does not have enough money to purchase the item');
   } else if (cashGiven === price) {
-    change.textContent = 'No change due - customer paid with exact cash';
+    changeDue.textContent = 'No change due - customer paid with exact cash';
   }
   return;
 });
