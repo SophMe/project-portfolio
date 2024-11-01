@@ -67,6 +67,9 @@ class CashRegister {
   }
 }
 
+const register = new CashRegister(price, cid);
+console.log(register);
+
 purchaseBtn.addEventListener('click', () => {
   const cashGiven = parseFloat(cash.value);
   if (cashGiven < price) {
