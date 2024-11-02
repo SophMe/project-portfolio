@@ -76,6 +76,8 @@ purchaseBtn.addEventListener('click', () => {
     alert('Customer does not have enough money to purchase the item');
   } else if (cashGiven === price) {
     changeDue.textContent = 'No change due - customer paid with exact cash';
+  } else {
+    const changeMessage = register.calculateChange(cashGiven);
+    changeDue.textContent = changeMessage;
   }
-  return;
 });
