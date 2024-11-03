@@ -61,9 +61,13 @@ let register = new CashRegister(price, cid);
 
 purchaseBtn.addEventListener('click', () => {
   const cashGiven = parseFloat(cash.value);
+  register.cash = cashGiven;
   if (cashGiven < price) {
     alert('Customer does not have enough money to purchase the item');
   } else if (cashGiven === price) {
     changeDue.textContent = 'No change due - customer paid with exact cash';
+  } else {
+    let change = register.calculateChange();
+    changeDue.textContent = `Change Due: $${change.toFixed(2)}`;
   }
 });
