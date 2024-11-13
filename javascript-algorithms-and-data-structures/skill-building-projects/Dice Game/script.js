@@ -27,13 +27,18 @@ const rollDice = () => {
   });
 };
 
+const updateStats = () => {
+  rollsElement.innerText = rolls;
+  roundElement.innerText = round;
+};
+
 rollDiceBtn.addEventListener("click", () => {
   if (rolls === 3) {
     alert("You have made three rolls this round. Please select a score.");
   } else {
     rolls++;
     rollDice();
-    
+    updateStats();
   }
 });
 
