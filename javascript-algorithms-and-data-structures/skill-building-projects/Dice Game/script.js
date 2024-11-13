@@ -16,22 +16,28 @@ let score = 0;
 let round = 1; 
 let rolls = 0;
 
-rulesBtn.addEventListener('click', () => {
-  isModalShowing = !isModalShowing;
-  if (isModalShowing) {
-    rulesContainer.style.display = 'block';
-    rulesBtn.innerText = "Hide rules";
-  } else {
-    rulesContainer.style.display = 'none';
-    rulesBtn.innerText = "Show rules";
-  }
+const rollDice = () => {
+  diceValuesArr = [];
+  for (let i = 0; i < 5; i++) {
+    const randomDice = Math.floor(Math.random() * 6) + 1;
+    diceValuesArr.push(randomDice);
+  };
+  listOfAllDice.forEach((dice, index) => {
+    dice.textContent = diceValuesArr[index];
+  });
+};
+
+rollDiceBtn.addEventListener("click", () => {
+  rollDice();
 });
 
-rollDiceBtn.addEventListener('click', () => {
-  diceValuesArr = Array.from({length: 5}, () => Math.floor(Math.random() * 6) + 1);
-  diceValuesArr.sort((a, b) => a - b);
-
-  listOfAllDice.forEach((die, index) => {
-    die.textContent = diceValuesArr[index];
-  });
+rulesBtn.addEventListener("click", () => {
+  isModalShowing = !isModalShowing;
+  if (isModalShowing) {
+    rulesBtn.textContent = "Hide rules";
+    rulesContainer.style.display = "block";
+  } else {
+    rulesBtn.textContent = "Show rules";
+    rulesContainer.style.display = "none";
+  }
 });
