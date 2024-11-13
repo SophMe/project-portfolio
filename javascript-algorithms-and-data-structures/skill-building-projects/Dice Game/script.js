@@ -26,3 +26,12 @@ rulesBtn.addEventListener('click', () => {
     rulesBtn.innerText = "Show rules";
   }
 });
+
+rollDiceBtn.addEventListener('click', () => {
+  diceValuesArr = Array.from({length: 5}, () => Math.floor(Math.random() * 6) + 1);
+  diceValuesArr.sort((a, b) => a - b);
+
+  listOfAllDice.forEach((die, index) => {
+    die.textContent = diceValuesArr[index];
+  });
+});
