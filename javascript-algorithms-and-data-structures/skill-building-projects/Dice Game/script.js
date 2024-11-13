@@ -16,6 +16,8 @@ let score = 0;
 let round = 1; 
 let rolls = 0;
 
+const maxRolls = 3;
+
 const rollDice = () => {
   diceValuesArr = [];
   for (let i = 0; i < 5; i++) {
@@ -28,7 +30,13 @@ const rollDice = () => {
 };
 
 rollDiceBtn.addEventListener("click", () => {
-  rollDice();
+  if (rolls >= maxRolls) {
+    alert("You must select a score");
+  } else {
+    rollDice();
+    rolls++;
+    rollsElement.textContent = `Rolls: ${rolls}`;
+}
 });
 
 rulesBtn.addEventListener("click", () => {
