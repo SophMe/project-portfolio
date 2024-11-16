@@ -1,6 +1,14 @@
+:root {
+  --light-grey: #F7E2D4;
+  --dark-blue: #2E4147;
+  --orange: #F5DEB3;
+  --accent-shadow: rgba(46, 65, 71, 0.5);
+  --hover-grey: #ebe8e5;
+}
+
 body {
-  background-color: #631e1b;
-  color: #f7ece1;
+  background-color: var(--dark-blue);
+  color: var(--light-grey);
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
@@ -20,12 +28,12 @@ main {
 
 h1 {
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px #2c2c2c;
+  text-shadow: 2px 2px 4px var(--accent-shadow);
 }
 
 .divider {
   height: 2px;
-  background-color: #ebe8e5;
+  background-color: var(--hover-grey);
   width: 100%;
   margin: 20px 0;
 }
@@ -38,10 +46,10 @@ h1 {
 
 select {
   appearance: none;
-  background-color: #f7ece1;
-  border: 2px solid #4357a0;
+  background-color: var(--light-grey);
+  border: 2px solid var(--dark-blue);
   padding: 10px;
-  color: #631e1b;
+  color: var(--dark-blue);
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
@@ -64,13 +72,13 @@ select {
   cursor: pointer;
   padding: 10px 20px;
   margin: 10px;
-  color: #631e1b;
-  background-color: #f7ece1;
+  color: var(--dark-blue);
+  background-color: var(--light-grey);
   border-radius: 50px;
-  border: 2px solid #4357a0;
+  border: 2px solid var(--dark-blue);
   transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #ebe8e5;
+  background-color: var(--hover-grey);
 }
