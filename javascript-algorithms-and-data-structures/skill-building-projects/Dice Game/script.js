@@ -43,29 +43,27 @@ const getHighestDuplicates = (diceValuesArr) => {
     acc[num] = (acc[num] || 0) + 1;
     return acc;
   }, {});
-  return counts;
-};
 
-const threeOfAKind = () => {
-  const counts = getHighestDuplicates(diceValuesArr);
   const hasThreeOfAKind = Object.values(counts).some(count => count >= 3);
   if (hasThreeOfAKind) {
     const sumOfDice = diceValuesArr.reduce((sum, num) => sum + num, 0);
-    const scoreForThreeOfAKind = sumOfDice;
-    const index = 0;
-    updateRadioOption(index, scoreForThreeOfAKind);
+    const indexThreeOfAKind = 0;
+    updateRadioOption(indexThreeOfAKind, sumOfDice);
   }
-};
 
-const fourOfAKind = () => {
-  const counts = getHighestDuplicates(diceValuesArr);
   const hasFourOfAKind = Object.values(counts).some(count => count >= 4);
   if (hasFourOfAKind) {
     const sumOfDice = diceValuesArr.reduce((sum, num) => sum + num, 0);
-    const scoreForFourOfAKind = sumOfDice;
-    const index = 1;
-    updateRadioOption(index, scoreForFourOfAKind);
+    const indexFourOfAKind = 1;
+    updateRadioOption(indexFourOfAKind, sumOfDice);
   }
+
+  if (!hasThreeOfAKind && !hasFourOfAKind) {
+    const indexNoneOfTheAbove = 5;
+    updateRadioOption(indexNoneOfTheAbove, 0);
+  }
+
+  return counts;
 };
 
 rollDiceBtn.addEventListener("click", () => {
@@ -75,8 +73,7 @@ rollDiceBtn.addEventListener("click", () => {
     rolls++;
     rollDice();
     updateStats();
-    threeOfAKind();
-    fourOfAKind();
+    getHighestDuplicates(diceValuesArr);
   }
 });
 
