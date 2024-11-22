@@ -108,3 +108,18 @@ rulesBtn.addEventListener("click", () => {
     rulesContainer.style.display = "none";
   }
 });
+
+keepScoreBtn.addEventListener("click", () => {
+  const selectedOption = document.querySelector("#score-options input:checked");
+  if (!selectedOption) {
+    alert("Please select a score before proceeding.");
+    return;
+  }
+  const selectedValue = selectedOption.value;
+  const achieved = selectedOption.id;
+  updateScore(selectedValue, achieved);
+  resetRadioOptions();
+  round++;
+  rolls = 0;
+  updateStats();
+});
