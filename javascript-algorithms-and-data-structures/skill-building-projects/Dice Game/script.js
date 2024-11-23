@@ -122,4 +122,17 @@ keepScoreBtn.addEventListener("click", () => {
   round++;
   rolls = 0;
   updateStats();
+
+  if (round > 6) {
+    setTimeout(() => {
+      alert(`Game Over! Your final score is: ${score}`);
+    }, 500);
+    rolls = 0;
+    round = 1;
+    score = 0;
+    totalScoreElement.textContent = score;
+    scoreHistory.innerHTML = "";
+    updateStats();
+    resetRadioOptions();
+  }
 });
