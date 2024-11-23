@@ -110,29 +110,30 @@ rulesBtn.addEventListener("click", () => {
 });
 
 keepScoreBtn.addEventListener("click", () => {
-  const selectedOption = document.querySelector("#score-options input:checked");
-  if (!selectedOption) {
-    alert("Please select a score before proceeding.");
-    return;
-  }
-  const selectedValue = selectedOption.value;
-  const achieved = selectedOption.id;
-  updateScore(selectedValue, achieved);
-  resetRadioOptions();
-  round++;
-  rolls = 0;
-  updateStats();
+  let selectedValue;
+  let achieved;
 
-  if (round > 6) {
-    setTimeout(() => {
-      alert(`Game Over! Your final score is: ${score}`);
-    }, 500);
+  for (const radioButton of scoreInputs) {
+    if (radioButton.checked) {
+      selectedValue = radioButton.value;
+      achieved = radioButton.id;
+      break;
+    }
+  }
+
+  if (selectedValue) {
     rolls = 0;
-    round = 1;
-    score = 0;
-    totalScoreElement.textContent = score;
-    scoreHistory.innerHTML = "";
+    round++;
     updateStats();
     resetRadioOptions();
+    updateScore(selectedValue, achieved);
+    if (round > 6) {
+      setTimeout(() => {
+        alert(`Game Over! Your total score is ${score}`);
+      }, 500);
+
+    }
+  } else {
+    alert("Please select an option or roll the dice");
   }
 });
