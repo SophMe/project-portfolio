@@ -92,6 +92,35 @@ const detectFullHouse = (arr) => {
   updateRadioOption(5, 0);
 };
 
+const checkForStraights = (arr) => {
+  const sortedUniqueDice = [...new Set(arr)].sort((a, b) => a - b);
+
+  const largeStraight1 = [1, 2, 3, 4, 5];
+  const largeStraight2 = [2, 3, 4, 5, 6];
+  if (
+    sortedUniqueDice.length === 5 &&
+    (largeStraight1.every((val, index) => val === sortedUniqueDice[index]) ||
+      largeStraight2.every((val, index) => val === sortedUniqueDice[index]))
+  ) {
+    updateRadioOption(4, 40);
+    updateRadioOption(3, 30);
+    return;
+  }
+
+  for (let i = 0; i <= sortedUniqueDice.length - 4; i++) {
+    if (
+      sortedUniqueDice[i] + 1 === sortedUniqueDice[i + 1] &&
+      sortedUniqueDice[i] + 2 === sortedUniqueDice[i + 2] &&
+      sortedUniqueDice[i] + 3 === sortedUniqueDice[i + 3]
+    ) {
+      updateRadioOption(3, 30);
+      return;
+    }
+  }
+
+  updateRadioOption(5, 0);
+};
+
 const resetRadioOptions = () => {
   scoreInputs.forEach(input => {
     input.disabled = true;
@@ -125,6 +154,7 @@ rollDiceBtn.addEventListener("click", () => {
     updateStats();
     getHighestDuplicates(diceValuesArr);
     detectFullHouse(diceValuesArr);
+    checkForStraights(diceValuesArr);
   }
 });
 
