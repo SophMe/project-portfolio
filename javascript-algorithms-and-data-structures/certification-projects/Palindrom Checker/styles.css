@@ -1,7 +1,16 @@
+:root {
+  --dark-blue: #2E4147;
+  --grey: #B7B7B7;
+  --light-grey: #EBE8E5;
+  --pink-grey: #F7E2D4;
+  --golden-olive: #A78E44;
+  --soft-gold: #D6A85D;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #555;
+  background-color: var(--dark-blue);
+  color: var(--light-grey);
   margin: 0;
   padding: 20px;
   display: flex;
@@ -14,14 +23,14 @@ body {
 h3 {
   text-align: center;
   margin-bottom: 20px;
-  color: #555;
+  color: var(--light-grey);
 }
 
 form {
-  background-color: #fdfdfd;
+  background-color: var(--dark-blue);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 5px 5px 20px #ffa500;
+  box-shadow: 5px 5px 20px var(--golden-olive);
   width: 100%;
   max-width: 400px;
 }
@@ -30,14 +39,16 @@ input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #555;
+  border: 1px solid var(--light-grey);
   border-radius: 4px;
   font-size: 1rem;
+  color: var(--light-grey);
+  background-color: var(--dark-blue);
 }
 
 button {
-  background-color: #ffa500;
-  color: white;
+  background-color: var(--pink-grey);
+  color: var(--dark-blue);
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
@@ -49,12 +60,12 @@ button {
 }
 
 button:hover {
-  background-color: #ff9500;
+  background-color: var(--soft-gold);
 }
 
 #result {
-  margin-top: 15px auto;
+  margin-top: 15px;
   text-align: center;
   font-size: 1.1rem;
-  color: #ffa500;
+  color: var(--pink-grey);
 }

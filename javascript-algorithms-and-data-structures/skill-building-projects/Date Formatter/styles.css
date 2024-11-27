@@ -1,9 +1,8 @@
 :root {
-  --light-grey: #F7E2D4;
+  --pink-grey: #F7E2D4;
   --dark-blue: #2E4147;
-  --orange: #F5DEB3;
-  --accent-shadow: rgba(46, 65, 71, 0.5);
-  --hover-grey: #ebe8e5;
+  --accent-shadow: #2E41477F;
+  --hover-grey: #EBE8E5;
 }
 
 body {
