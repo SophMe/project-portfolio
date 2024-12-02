@@ -34,3 +34,6 @@ const fetchMoreAuthors = () => {
   displayAuthors(authorDataArr.slice(startingIndex, endingIndex));
 };
 
+loadMoreBtn.addEventListener('click', () => {
+
+});
