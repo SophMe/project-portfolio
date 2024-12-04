@@ -6,9 +6,16 @@ const avatarUrl = "https://sea1.discourse-cdn.com/freecodecamp";
 const postsContainer = document.getElementById('posts-container');
 
 const timeAgo = (time) => {
-  const currentTime = newDate();
-  const lastPost = newDate(time);
-};
+  const currentTime = new Date();
+  const lastPost = new Date(time);
+  if (Math.floor((currentTime - lastPost) / 60000) < 60) {
+    return `${Math.floor((currentTime - lastPost) / 60000)}m ago`;
+  } else if (Math.floor((currentTime - lastPost) / 3600000) < 24) {
+    return `${Math.floor((currentTime - lastPost) / 3600000)}h ago`;
+  } else {
+    return `${Math.floor((currentTime - lastPost) / 86400000)}d ago`;
+  }
+  };
 
 const fetchData = async () => {
   try {
