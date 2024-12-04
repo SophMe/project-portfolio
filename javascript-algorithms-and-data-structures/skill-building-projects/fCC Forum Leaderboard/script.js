@@ -19,6 +19,14 @@ const timeAgo = (time) => {
   }
 };
 
+const viewCount = (views) => {
+  if (views >= 1000) {
+    return `${Math.floor(views / 1000)}k`;
+  } else {
+    return views;
+  }
+};
+
 const fetchData = async () => {
   try {
     const res = await fetch(forumLatest);
@@ -44,7 +52,7 @@ const showLatestPosts = (data) => {
         </td>
         <td></td>
         <td>${posts_count - 1}</td>
-        <td>${views}</td>
+        <td>${viewCount(views)}</td>
         <td>${timeAgo(bumped_at)}</td>
       </tr>
     `;
