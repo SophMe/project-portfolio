@@ -12,10 +12,12 @@ const timeAgo = (time) => {
     return `${Math.floor((currentTime - lastPost) / 60000)}m ago`;
   } else if (Math.floor((currentTime - lastPost) / 3600000) < 24) {
     return `${Math.floor((currentTime - lastPost) / 3600000)}h ago`;
-  } else {
+  } else if (Math.floor((currentTime - lastPost) / 86400000) < 7) {
     return `${Math.floor((currentTime - lastPost) / 86400000)}d ago`;
+  } else {
+    return `${Math.floor((currentTime - lastPost) / (86400000 * 7))}w ago`;
   }
-  };
+};
 
 const fetchData = async () => {
   try {
@@ -43,7 +45,7 @@ const showLatestPosts = (data) => {
         <td></td>
         <td>${posts_count - 1}</td>
         <td>${views}</td>
-        <td></td>
+        <td>${timeAgo(bumped_at)}</td>
       </tr>
     `;
   }).join('');
