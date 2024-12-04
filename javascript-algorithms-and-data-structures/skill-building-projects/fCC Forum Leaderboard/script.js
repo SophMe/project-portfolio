@@ -23,5 +23,16 @@ const showLatestPosts = (data) => {
   postsContainer.innerHTML = topics.map((item) => {
     // console.log(item);
     const {id, title, views, posts_count, slug, posters, category_id, bumped_at} = item;
-  })
+    return `
+      <tr>
+        <td>
+          <p class="post-title">${title}</p>
+        </td>
+        <td></td>
+        <td>${posts_count - 1}</td>
+        <td>${views}</td>
+        <td></td>
+      </tr>
+    `;
+  }).join('');
 };
