@@ -25,9 +25,12 @@ function calculateChange(cashGiven) {
   for (let i = 0; i < cid.length; i++) {
     totalCashInDrawer += cid[i][1];
   }
-
   totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
 
-  console.log(`Total cash in drawer: ${totalCashInDrawer}`);
-  console.log(`Change due: ${changeDue}`);
+  if (changeDue > totalCashInDrawer) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
+  if (changeDue < 0) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
 };
