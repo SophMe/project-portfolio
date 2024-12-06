@@ -16,3 +16,9 @@ const cashInput = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn');
 const changeDueDisplay = document.getElementById('change-due');
 const cidDisplay = document.getElementById('cid-display');
+
+function calculateChange(cashGiven) {
+  let changeDue = Math.round((cashGiven - price) * 100) / 100;
+  let change = [];
+  let totalCashInDrawer = 0;
+};
