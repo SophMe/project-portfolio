@@ -21,4 +21,13 @@ function calculateChange(cashGiven) {
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
   let change = [];
   let totalCashInDrawer = 0;
+
+  for (let i = 0; i < cid.length; i++) {
+    totalCashInDrawer += cid[i][1];
+  }
+
+  totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
+
+  console.log(`Total cash in drawer: ${totalCashInDrawer}`);
+  console.log(`Change due: ${changeDue}`);
 };
