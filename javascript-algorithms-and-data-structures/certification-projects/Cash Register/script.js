@@ -28,6 +28,8 @@ function calculateChange(cashGiven) {
     totalCashInDrawer += cid[i][1];
   }
   totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
+  console.log(`Total cash in drawer: ${totalCashInDrawer}`);
+  console.log(`Change due: ${changeDue}`);
 
   // insufficient funds
   if (changeDue > totalCashInDrawer) {
@@ -77,3 +79,16 @@ function getCoinValue(coinName) {
 
   return coinValues[coinName];
 }
+
+// Test cases
+console.log('Test 1: Customer gives enough cash');
+let result1 = calculateChange(5.00);
+console.log(result1);
+
+console.log('Test 2: Customer gives less cash than price');
+let result2 = calculateChange(1.50);
+console.log(result2);
+
+console.log('Test 3: Customer gives exact amount');
+let result3 = calculateChange(1.87);
+console.log(result3);
