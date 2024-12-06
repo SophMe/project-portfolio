@@ -33,4 +33,7 @@ function calculateChange(cashGiven) {
   if (changeDue < 0) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
+  if (changeDue === 0) {
+    return { status: 'OPEN', change: [] };
+  }
 };
