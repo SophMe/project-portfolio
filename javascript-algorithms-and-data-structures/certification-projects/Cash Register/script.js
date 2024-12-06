@@ -40,4 +40,18 @@ function calculateChange(cashGiven) {
   if (changeDue === 0) {
     return { status: 'OPEN', change: [] };
   }
+  // change due
+  for (let i = cid.length - 1; i >= 0; i--) {
+    let coinValue = getCoinValue(cid[i][0]);
+    let coinAmount = cid[i][1];
+    let coinCount = 0;
+    while (changeDue >= coinValue && coinAmount > 0) {
+      changeDue = Math.round((changeDue - coinValue) * 100) / 100;
+      coinAmount = Math.round((coinAmount - coinValue) * 100) / 100;
+      coinCount++;
+    }
+    if (coinCount > 0) {
+      change.push([cid[i][0], coinCount * coinValue]);
+    }
+  }
 };
