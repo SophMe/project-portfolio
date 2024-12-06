@@ -57,4 +57,23 @@ function calculateChange(cashGiven) {
   if (changeDue > 0.01) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
+  return { status: 'OPEN', change: change };
 };
+
+// Get Coin Values
+function getCoinValue(coinName) {
+  const coinValues = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "HALF DOLLAR": 0.5,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "HUNDRED": 100
+  };
+
+  return coinValues[coinName];
+}
