@@ -54,4 +54,7 @@ function calculateChange(cashGiven) {
       change.push([cid[i][0], coinCount * coinValue]);
     }
   }
+  if (changeDue > 0.01) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
 };
