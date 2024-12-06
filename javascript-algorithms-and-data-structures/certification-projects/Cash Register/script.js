@@ -1,4 +1,4 @@
-// price and cid provided by freeCodeCamp
+// Price and cid provided by freeCodeCamp
 let price = 1.87;
 let cid = [
   ['PENNY', 1.01],
@@ -12,11 +12,13 @@ let cid = [
   ['ONE HUNDRED', 100]
 ];
 
+// Access DOM Elements
 const cashInput = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn');
 const changeDueDisplay = document.getElementById('change-due');
 const cidDisplay = document.getElementById('cid-display');
 
+// Calculate Change
 function calculateChange(cashGiven) {
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
   let change = [];
@@ -27,12 +29,14 @@ function calculateChange(cashGiven) {
   }
   totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
 
+  // insufficient funds
   if (changeDue > totalCashInDrawer) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
   if (changeDue < 0) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
+  // exact change
   if (changeDue === 0) {
     return { status: 'OPEN', change: [] };
   }
