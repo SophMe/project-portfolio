@@ -22,7 +22,7 @@ const totalDisplay = document.getElementById('total');
 totalDisplay.textContent = `Total: $${price.toFixed(2)}`;
 
 // Calculate Change
-function calculateChange(cashGiven) {
+const calculateChange = (cashGiven) => {
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
   let change = [];
   let totalCashInDrawer = 0;
@@ -66,7 +66,7 @@ function calculateChange(cashGiven) {
 };
 
 // Get Coin Values
-function getCoinValue(coinName) {
+const getCoinValue = (coinName) => {
   const coinValues = {
     "PENNY": 0.01,
     "NICKEL": 0.05,
