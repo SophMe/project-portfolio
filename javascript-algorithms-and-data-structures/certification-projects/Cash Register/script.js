@@ -21,6 +21,17 @@ const totalDisplay = document.getElementById('total');
 
 totalDisplay.textContent = `Total: $${price.toFixed(2)}`;
 
+// Update CID
+const updateCidDisplay = () => {
+  cidDisplay.textContent = '';
+  cid.forEach(([name, amount]) => {
+    const coinElement = document.createElement('p');
+    coinElement.textContent = `${name}: $${amount.toFixed(2)}`;
+    cidDisplay.appendChild(coinElement);
+  });
+};
+updateCidDisplay();
+
 // Calculate Change
 const calculateChange = (cashGiven) => {
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
