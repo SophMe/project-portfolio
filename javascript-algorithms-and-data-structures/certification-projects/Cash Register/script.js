@@ -1,5 +1,5 @@
 // Price and cid provided by freeCodeCamp
-let price = 1.87;
+let price = 3.26;
 let cid = [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
@@ -17,6 +17,9 @@ const cashInput = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn');
 const changeDueDisplay = document.getElementById('change-due');
 const cidDisplay = document.getElementById('cid-display');
+const totalDisplay = document.getElementById('total');
+
+totalDisplay.textContent = `Total: $${price.toFixed(2)}`;
 
 // Calculate Change
 function calculateChange(cashGiven) {
