@@ -51,3 +51,10 @@ const getCoinValue = (coinName) => {
 
   return coinValues[coinName];
 }
+
+const handleTransaction = (cashGiven, price, cid) => {
+  if (cashGiven < price) {
+    alert("Customer does not have enough money to purchase the item");
+    return;
+  }
+};
