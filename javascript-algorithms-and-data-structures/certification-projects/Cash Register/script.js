@@ -78,3 +78,10 @@ const handleTransaction = (cashGiven, price, cid) => {
     return;
   }
 };
+
+// Event listener to call handleTransaction on button click
+purchaseBtn.addEventListener('click', () => {
+  const cashGiven = parseFloat(cashInput.value);
+  handleTransaction(cashGiven, price, cid);
+  updateCidDisplay();
+});
