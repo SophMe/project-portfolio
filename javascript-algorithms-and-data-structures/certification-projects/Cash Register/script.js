@@ -52,9 +52,14 @@ const getCoinValue = (coinName) => {
   return coinValues[coinName];
 }
 
+// Handle Transactions
 const handleTransaction = (cashGiven, price, cid) => {
   if (cashGiven < price) {
     alert("Customer does not have enough money to purchase the item");
+    return;
+  }
+  if (cashGiven === price) {
+    changeDueDisplay.textContent = "No change due - customer paid with exact cash";
     return;
   }
 };
