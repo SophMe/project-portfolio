@@ -69,4 +69,12 @@ const handleTransaction = (cashGiven, price, cid) => {
     changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
     return;
   }
+  if (changeDue === totalCashInDrawer) {
+    let sortedCid = cid.filter(([_, amount]) => amount > 0)
+                       .map(([name, amount]) => `${name}: $${amount.toFixed(2)}`)
+                       .join(', ');
+
+    changeDueDisplay.textContent = `Status: CLOSED ${sortedCid}`;
+    return;
+  }
 };
