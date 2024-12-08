@@ -21,59 +21,17 @@ const totalDisplay = document.getElementById('total');
 
 totalDisplay.textContent = `Total: $${price.toFixed(2)}`;
 
-// Update CID
 const updateCidDisplay = () => {
   cidDisplay.textContent = '';
+  let totalCidAmount = 0;
+
   cid.forEach(([name, amount]) => {
     const coinElement = document.createElement('p');
     coinElement.textContent = `${name}: $${amount.toFixed(2)}`;
     cidDisplay.appendChild(coinElement);
+    totalCidAmount += amount;
   });
-};
-updateCidDisplay();
-
-// Calculate Change
-const calculateChange = (cashGiven) => {
-  let changeDue = Math.round((cashGiven - price) * 100) / 100;
-  let change = [];
-  let totalCashInDrawer = 0;
-
-  for (let i = 0; i < cid.length; i++) {
-    totalCashInDrawer += cid[i][1];
-  }
-  totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
-  console.log(`Total cash in drawer: ${totalCashInDrawer}`);
-  console.log(`Change due: ${changeDue}`);
-
-  // insufficient funds
-  if (changeDue > totalCashInDrawer) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
-  if (changeDue < 0) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
-  // exact change
-  if (changeDue === 0) {
-    return { status: 'OPEN', change: [] };
-  }
-  // change due
-  for (let i = cid.length - 1; i >= 0; i--) {
-    let coinValue = getCoinValue(cid[i][0]);
-    let coinAmount = cid[i][1];
-    let coinCount = 0;
-    while (changeDue >= coinValue && coinAmount > 0) {
-      changeDue = Math.round((changeDue - coinValue) * 100) / 100;
-      coinAmount = Math.round((coinAmount - coinValue) * 100) / 100;
-      coinCount++;
-    }
-    if (coinCount > 0) {
-      change.push([cid[i][0], coinCount * coinValue]);
-    }
-  }
-  if (changeDue > 0.01) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
-  return { status: 'OPEN', change: change };
+  const totalAmount = Math.round((totalCidAmount + price) * 100) / 100;
 };
 
 // Get Coin Values
