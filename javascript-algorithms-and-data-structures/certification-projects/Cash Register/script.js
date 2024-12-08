@@ -62,4 +62,7 @@ const handleTransaction = (cashGiven, price, cid) => {
     changeDueDisplay.textContent = "No change due - customer paid with exact cash";
     return;
   }
+  let changeDue = Math.round((cashGiven - price) * 100) / 100;
+  let totalCashInDrawer = cid.reduce((sum, [_, amount]) => sum + amount, 0);
+  totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
 };
