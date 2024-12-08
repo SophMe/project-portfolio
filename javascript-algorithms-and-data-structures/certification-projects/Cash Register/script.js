@@ -65,4 +65,8 @@ const handleTransaction = (cashGiven, price, cid) => {
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
   let totalCashInDrawer = cid.reduce((sum, [_, amount]) => sum + amount, 0);
   totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
+  if (changeDue > totalCashInDrawer) {
+    changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
+    return;
+  }
 };
