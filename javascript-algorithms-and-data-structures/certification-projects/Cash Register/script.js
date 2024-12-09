@@ -96,6 +96,13 @@ const handleTransaction = (cashGiven, price, cid) => {
       }
     }
   }
+
+  if (remainingChangeDue > 0.01) {
+    changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
+  } else {
+    const changeDisplay = change.map(([coin, amount]) => `${coin}: $${amount.toFixed(2)}`).join(', ');
+    changeDueDisplay.textContent = `Status: OPEN Change: ${changeDisplay}`;
+  }
 };
 
 // Event listener to call handleTransaction on button click
