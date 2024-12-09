@@ -1,73 +1,122 @@
-// DOM Elements
-const changeDue = document.getElementById('change-due');
-const cash = document.getElementById('cash');
-const purchaseBtn = document.getElementById('purchase-btn');
-const total = document.getElementById('total');
-
-// Price and Cash-in-Drawer Setup
+// Price and cid provided by freeCodeCamp
 let price = 3.26;
 let cid = [
-  ["PENNY", 1.01],
-  ["NICKEL", 2.05],
-  ["DIME", 3.10],
-  ["QUARTER", 4.25],
-  ["ONE", 90.00],
-  ["FIVE", 55.00],
-  ["TEN", 20.00],
-  ["TWENTY", 60.00],
-  ["ONE HUNDRED", 100.00]
+  ['PENNY', 1.01],
+  ['NICKEL', 2.05],
+  ['DIME', 3.1],
+  ['QUARTER', 4.25],
+  ['ONE', 90],
+  ['FIVE', 55],
+  ['TEN', 20],
+  ['TWENTY', 60],
+  ['ONE HUNDRED', 100]
 ];
-total.textContent = `Total: $${price}`;
 
-// Cash Register Class
-class CashRegister {
-  constructor(price, cid) {
-    this.price = price;
-    this.cid = cid;
-    this.cash = 0;
-  }
+const cashInput = document.getElementById('cash');
+const purchaseBtn = document.getElementById('purchase-btn');
+const changeDueDisplay = document.getElementById('change-due');
+const cidDisplay = document.getElementById('cid-display');
+const totalDisplay = document.getElementById('total');
 
-  calculateChange() {
-    return this.cash - this.price;
-  }
+totalDisplay.textContent = `Total: $${price.toFixed(2)}`;
 
-  checkDrawerStatus(changeDue) {
-    let totalInDrawer = this.cid.reduce((sum, currencyUnit) => sum + currencyUnit[1], 0);
-    if (totalInDrawer < changeDue) return "INSUFFICIENT_FUNDS";
-    if (totalInDrawer === changeDue) return "CLOSED";
-    return "OPEN";
-  }
+const updateCidDisplay = () => {
+  cidDisplay.textContent = '';
+  let totalCidAmount = 0;
 
-  calculateAvailableChange(changeDue) {
-    let availableChange = [];
-    for (let i = this.cid.length - 1; i >= 0; i--) {
-      let currencyUnit = this.cid[i];
-      let currencyValue = this.getCurrencyValue(currencyUnit[0]);
-      let amount = currencyUnit[1];
-      let toGive = 0;
-      while (changeDue >= currencyValue && amount > 0) {
-        changeDue = (changeDue - currencyValue).toFixed(2);
-        amount -= currencyValue;
-        toGive += currencyValue;
-      }
-      if (toGive > 0) availableChange.push([currencyUnit[0], toGive]);
-    }
-    return changeDue == 0 ? availableChange : "INSUFFICIENT_FUNDS";
-  }
-}
+  cid.forEach(([name, amount]) => {
+    const coinElement = document.createElement('p');
+    coinElement.textContent = `${name}: $${amount.toFixed(2)}`;
+    cidDisplay.appendChild(coinElement);
+    totalCidAmount += amount;
+  });
+  const totalAmount = Math.round((totalCidAmount + price) * 100) / 100;
+};
 
-// Instantiate and Event Listener
-let register = new CashRegister(price, cid);
-
-purchaseBtn.addEventListener('click', () => {
-  const cashGiven = parseFloat(cash.value);
-  register.cash = cashGiven;
+// Handle Transactions
+const handleTransaction = (cashGiven, price, cid) => {
+  // cash less than price
   if (cashGiven < price) {
-    alert('Customer does not have enough money to purchase the item');
-  } else if (cashGiven === price) {
-    changeDue.textContent = 'No change due - customer paid with exact cash';
-  } else {
-    const changeMessage = register.calculateChange(cashGiven);
-    changeDue.textContent = changeMessage;
+    alert("Customer does not have enough money to purchase the item");
+    return;
   }
+
+  // cash equals price
+  if (cashGiven === price) {
+    changeDueDisplay.textContent = "No change due - customer paid with exact cash";
+    return;
+  }
+
+  // alculate change due
+  let changeDue = Math.round((cashGiven - price) * 100) / 100;
+  let totalCashInDrawer = cid.reduce((sum, [_, amount]) => sum + amount, 0);
+  totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
+
+  // check for insufficient cid
+  if (changeDue > totalCashInDrawer) {
+    changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
+    return;
+  }
+
+  // check for exact change
+  if (changeDue === totalCashInDrawer) {
+    let sortedCid = cid.filter(([_, amount]) => amount > 0)
+                       .map(([name, amount]) => `${name}: $${amount.toFixed(2)}`)
+                       .join(', ');
+
+    changeDueDisplay.textContent = `Status: CLOSED ${sortedCid}`;
+    return;
+  }
+
+  // calculate exact change (for OPEN status)
+  let change = [];
+  let remainingChangeDue = changeDue;
+
+  for (let i = cid.length - 1; i >= 0; i--) {
+    const coinValue = getCoinValue(cid[i][0]);
+    let coinAmount = cid[i][1];
+
+    if (remainingChangeDue >= coinValue && coinAmount > 0) {
+      let coinCount = 0;
+      while (remainingChangeDue >= coinValue && coinAmount >= coinValue) {
+        remainingChangeDue = Math.round((remainingChangeDue - coinValue) * 100) / 100;
+        coinAmount = Math.round((coinAmount - coinValue) * 100) / 100;
+        coinCount++;
+      }
+      if (coinCount > 0) {
+        change.push([cid[i][0], coinCount * coinValue]);
+      }
+    }
+  }
+
+  // check if change can be given
+  if (remainingChangeDue > 0.01) {
+    changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
+  } else {
+    const changeDisplay = change.map(([coin, amount]) => `${coin}: $${amount.toFixed(2)}`).join(', ');
+    changeDueDisplay.textContent = `Status: OPEN Change: ${changeDisplay}`;
+  }
+};
+
+// Get Coin Values
+const getCoinValue = (coinName) => {
+  const coinValues = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "HUNDRED": 100
+  };
+  return coinValues[coinName];
+};
+
+// Event listener to call handleTransaction on button click
+purchaseBtn.addEventListener('click', () => {
+  const cashGiven = parseFloat(cashInput.value);
+  handleTransaction(cashGiven, price, cid);
+  updateCidDisplay();
 });
