@@ -77,6 +77,25 @@ const handleTransaction = (cashGiven, price, cid) => {
     changeDueDisplay.textContent = `Status: CLOSED ${sortedCid}`;
     return;
   }
+
+  let change = [];
+  let remainingChangeDue = changeDue;
+  for (let i = cid.length - 1; i >= 0; i--) {
+    const coinValue = getCoinValue(cid[i][0]);
+    let coinAmount = cid[i][1];
+
+    if (remainingChangeDue >= coinValue && coinAmount > 0) {
+      let coinCount = 0;
+      while (remainingChangeDue >= coinValue && coinAmount >= coinValue) {
+        remainingChangeDue = Math.round((remainingChangeDue - coinValue) * 100) / 100;
+        coinAmount = Math.round((coinAmount - coinValue) * 100) / 100;
+        coinCount++;
+      }
+      if (coinCount > 0) {
+        change.push([cid[i][0], coinCount * coinValue]);
+      }
+    }
+  }
 };
 
 // Event listener to call handleTransaction on button click
