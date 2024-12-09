@@ -12,7 +12,6 @@ let cid = [
   ['ONE HUNDRED', 100]
 ];
 
-// Access DOM Elements
 const cashInput = document.getElementById('cash');
 const purchaseBtn = document.getElementById('purchase-btn');
 const changeDueDisplay = document.getElementById('change-due');
@@ -34,41 +33,32 @@ const updateCidDisplay = () => {
   const totalAmount = Math.round((totalCidAmount + price) * 100) / 100;
 };
 
-// Get Coin Values
-const getCoinValue = (coinName) => {
-  const coinValues = {
-    "PENNY": 0.01,
-    "NICKEL": 0.05,
-    "DIME": 0.1,
-    "QUARTER": 0.25,
-    "HALF DOLLAR": 0.5,
-    "ONE": 1,
-    "FIVE": 5,
-    "TEN": 10,
-    "TWENTY": 20,
-    "HUNDRED": 100
-  };
-
-  return coinValues[coinName];
-}
-
 // Handle Transactions
 const handleTransaction = (cashGiven, price, cid) => {
+  // cash less than price
   if (cashGiven < price) {
     alert("Customer does not have enough money to purchase the item");
     return;
   }
+
+  // cash equals price
   if (cashGiven === price) {
     changeDueDisplay.textContent = "No change due - customer paid with exact cash";
     return;
   }
+
+  // alculate change due
   let changeDue = Math.round((cashGiven - price) * 100) / 100;
   let totalCashInDrawer = cid.reduce((sum, [_, amount]) => sum + amount, 0);
   totalCashInDrawer = Math.round(totalCashInDrawer * 100) / 100;
+
+  // check for insufficient cid
   if (changeDue > totalCashInDrawer) {
     changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
     return;
   }
+
+  // check for exact change
   if (changeDue === totalCashInDrawer) {
     let sortedCid = cid.filter(([_, amount]) => amount > 0)
                        .map(([name, amount]) => `${name}: $${amount.toFixed(2)}`)
@@ -78,8 +68,10 @@ const handleTransaction = (cashGiven, price, cid) => {
     return;
   }
 
+  // calculate exact change (for OPEN status)
   let change = [];
   let remainingChangeDue = changeDue;
+
   for (let i = cid.length - 1; i >= 0; i--) {
     const coinValue = getCoinValue(cid[i][0]);
     let coinAmount = cid[i][1];
@@ -97,12 +89,29 @@ const handleTransaction = (cashGiven, price, cid) => {
     }
   }
 
+  // check if change can be given
   if (remainingChangeDue > 0.01) {
     changeDueDisplay.textContent = 'Status: INSUFFICIENT_FUNDS';
   } else {
     const changeDisplay = change.map(([coin, amount]) => `${coin}: $${amount.toFixed(2)}`).join(', ');
     changeDueDisplay.textContent = `Status: OPEN Change: ${changeDisplay}`;
   }
+};
+
+// Get Coin Values
+const getCoinValue = (coinName) => {
+  const coinValues = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "HUNDRED": 100
+  };
+  return coinValues[coinName];
 };
 
 // Event listener to call handleTransaction on button click
