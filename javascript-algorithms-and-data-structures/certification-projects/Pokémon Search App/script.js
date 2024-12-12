@@ -14,3 +14,15 @@ const defenseElement = document.getElementById('defense');
 const specialAttackElement = document.getElementById('special-attack');
 const specialDefenseElement = document.getElementById('special-defense');
 const speedElement = document.getElementById('speed');
+
+let allPokemon = [];
+
+const fetchPokemonList = () => {
+  fetch('https://pokeapi-proxy.freecodecamp.rocks/api/pokemon')
+    .then((res) => res.json())
+    .then((data) => {
+      allPokemon = data.results;
+      console.log("All Pokémon:", allPokemon);
+    })
+    .catch((err) => console.error('Error fetching Pokémon list:', err));
+};
