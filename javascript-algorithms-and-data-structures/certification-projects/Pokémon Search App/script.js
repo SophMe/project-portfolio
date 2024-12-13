@@ -39,3 +39,15 @@ const formatInput = (input) => {
     .replace(/\./g, '-')
     .trim();
 };
+
+searchButton.addEventListener('click', () => {
+  const input = searchInput.value;
+  console.log('Search button clicked. Input:', input);
+  
+  if (input) {
+    const formattedInput = formatInput(input);
+    fetchPokemon(formattedInput);
+  } else {
+    alert('Please enter a Pokémon name or ID.');
+  }
+});
