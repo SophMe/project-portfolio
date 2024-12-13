@@ -17,14 +17,18 @@ const speedElement = document.getElementById('speed');
 
 let allPokemon = [];
 
-const fetchPokemonList = () => {
-  fetch('https://pokeapi-proxy.freecodecamp.rocks/api/pokemon')
-    .then((res) => res.json())
-    .then((data) => {
-      allPokemon = data.results;
-      console.log("All Pokémon:", allPokemon);
-    })
-    .catch((err) => console.error('Error fetching Pokémon list:', err));
+const fetchPokemon = async (query) => {
+  const apiUrl = `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${query}`;
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error('Pokémon not found');
+    }
+    const data = await response.json();
+    console.log('Fetched Pokémon data:', data);
+  } catch (error) {
+    alert(error.message);
+  }
 };
 
 const formatInput = (input) => {
