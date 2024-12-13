@@ -26,3 +26,12 @@ const fetchPokemonList = () => {
     })
     .catch((err) => console.error('Error fetching Pokémon list:', err));
 };
+
+const formatInput = (input) => {
+  return input
+    .toLowerCase()
+    .replace(/♀/g, '-f')
+    .replace(/♂/g, '-m')
+    .replace(/\./g, '-')
+    .trim();
+};
