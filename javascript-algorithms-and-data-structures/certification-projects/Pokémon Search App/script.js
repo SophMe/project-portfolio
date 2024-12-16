@@ -26,9 +26,14 @@ const fetchPokemon = async (query) => {
     }
     const data = await response.json();
     console.log('Fetched Pokémon data:', data);
+    displayPokemonData(data);
   } catch (error) {
     alert(error.message);
   }
+};
+
+const displayPokemonData = (pokemon) => {
+  console.log('Displaying data for:', pokemon.name, pokemon.id);
 };
 
 const formatInput = (input) => {
