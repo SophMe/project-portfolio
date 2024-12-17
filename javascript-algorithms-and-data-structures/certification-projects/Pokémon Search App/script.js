@@ -52,6 +52,17 @@ const displayPokemonData = (pokemon) => {
   specialAttackElement.textContent = stats['special-attack'] || 0;
   specialDefenseElement.textContent = stats['special-defense'] || 0;
   speedElement.textContent = stats.speed || 0;
+
+  const spriteElement = document.getElementById('sprite');
+  if (spriteElement) {
+    spriteElement.remove();
+  }
+  const newSprite = document.createElement('img');
+  newSprite.id = 'sprite';
+  newSprite.src = pokemon.sprites.front_default;
+  newSprite.alt = `${pokemon.name} sprite`;
+
+  document.getElementById('pokemon-info').appendChild(newSprite);
 };
 
 const formatInput = (input) => {
