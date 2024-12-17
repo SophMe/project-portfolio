@@ -34,6 +34,24 @@ const fetchPokemon = async (query) => {
 
 const displayPokemonData = (pokemon) => {
   console.log('Displaying data for:', pokemon.name, pokemon.id);
+
+  pokemonNameElement.textContent = pokemon.name.toUpperCase();
+  pokemonIdElement.textContent = pokemon.id;
+  weightElement.textContent = pokemon.weight;
+  heightElement.textContent = pokemon.height;
+  typesElement.textContent = pokemon.types.map(type => type.type.name).join(', ');
+
+  const stats = {};
+  pokemon.stats.forEach(stat => {
+    stats[stat.stat.name] = stat.base_stat;
+  });
+
+  hpElement.textContent = stats.hp || 0;
+  attackElement.textContent = stats.attack || 0;
+  defenseElement.textContent = stats.defense || 0;
+  specialAttackElement.textContent = stats['special-attack'] || 0;
+  specialDefenseElement.textContent = stats['special-defense'] || 0;
+  speedElement.textContent = stats.speed || 0;
 };
 
 const formatInput = (input) => {
