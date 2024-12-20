@@ -41,7 +41,12 @@ const displayPokemonData = (pokemon) => {
   pokemonIdElement.textContent = pokemon.id;
   weightElement.textContent = pokemon.weight;
   heightElement.textContent = pokemon.height;
-  typesElement.textContent = pokemon.types.map(type => type.type.name.toUpperCase()).join(', ');
+  
+  pokemon.types.forEach(type => {
+    const typeElement = document.createElement('div');
+    typeElement.textContent = type.type.name.toUpperCase();
+    typesElement.appendChild(typeElement);
+  });
 
   const stats = {};
   pokemon.stats.forEach(stat => {
