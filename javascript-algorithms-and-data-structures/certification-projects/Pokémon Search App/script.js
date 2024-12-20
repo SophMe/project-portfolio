@@ -35,11 +35,13 @@ const fetchPokemon = async (query) => {
 const displayPokemonData = (pokemon) => {
   console.log('Displaying data for:', pokemon.name, pokemon.id);
 
+  typesElement.textContent = '';
+
   pokemonNameElement.textContent = pokemon.name.toUpperCase();
   pokemonIdElement.textContent = pokemon.id;
   weightElement.textContent = pokemon.weight;
   heightElement.textContent = pokemon.height;
-  typesElement.textContent = pokemon.types.map(type => type.type.name).join(', ');
+  typesElement.textContent = pokemon.types.map(type => type.type.name.toUpperCase()).join(', ');
 
   const stats = {};
   pokemon.stats.forEach(stat => {
