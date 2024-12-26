@@ -1,0 +1,156 @@
+/* Root variables */
+:root {
+  --background-color: #2e4147;
+  --text-color: #f7ece1;
+  --accent-color: #4357a0;
+  --divider-color: #ebe8e5;
+  --highlight-color: #2c2c2c;
+  --button-hover-color: #ebe8e5;
+}
+
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  text-shadow: 2px 2px var(--highlight-color);
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--highlight-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+  color: var(--highlight-color);
+}
+
+#pokemon-info {
+  margin-bottom: 1.5rem;
+}
+
+#pokemon-info h2, #pokemon-info p {
+  margin-bottom: 0.5rem;
+}
+
+#stats-container {
+  text-align: center;
+}
+
+#stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#stats-table th, #stats-table td {
+  padding: 0.5rem;
+  border: 1px solid var(--divider-color);
+}
+
+#stats-table th {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+#stats-table td {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+  }
+
+  #stats-table th, #stats-table td {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.4rem 0.8rem;
+  }
+}
